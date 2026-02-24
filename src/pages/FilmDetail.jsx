@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 //importo useparams per recuperare id da url page
 import { useParams } from "react-router-dom";
 
+//importo componente per card review
+import ReviewCard from "../components/ReviewCard";
+
 function FilmDetail() {
   //recupero e scompongo oggetto risposta di useparams salvandomi l'id
   const { id } = useParams();
@@ -26,36 +29,11 @@ function FilmDetail() {
       </p>
       <p>attori principali</p>
       <div className="container">
-        <div className="card-reviews">
-          <h3>nome</h3>
-          <p>voto</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-            aliquid unde tempore amet eligendi! Nam corporis vero nostrum
-            debitis dicta! Animi excepturi veniam eius nulla aliquam itaque
-            distinctio architecto quos.
-          </p>
-        </div>
-        <div className="card-reviews">
-          <h3>nome</h3>
-          <p>voto</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-            aliquid unde tempore amet eligendi! Nam corporis vero nostrum
-            debitis dicta! Animi excepturi veniam eius nulla aliquam itaque
-            distinctio architecto quos.
-          </p>
-        </div>
-        <div className="card-reviews">
-          <h3>nome</h3>
-          <p>voto</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-            aliquid unde tempore amet eligendi! Nam corporis vero nostrum
-            debitis dicta! Animi excepturi veniam eius nulla aliquam itaque
-            distinctio architecto quos.
-          </p>
-        </div>
+        <ReviewCard />
+
+        <ReviewCard />
+        <ReviewCard />
+        <ReviewCard />
       </div>
       <Link to={"/"}>
         <button className="btn btn-outline-primary">Torna alla homepage</button>
