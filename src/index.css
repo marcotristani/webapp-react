@@ -1,0 +1,6 @@
+.container {
+  gap: 20px;
+}
+.card {
+  width: calc(100% / 3 - 40px / 3);
+}

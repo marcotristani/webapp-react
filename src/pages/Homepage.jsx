@@ -4,7 +4,7 @@ function Homepage() {
   return (
     <>
       <h2 className="text-primary">homepage</h2>
-      <div className="container">
+      <div className="container d-flex flex-wrap">
         <FilmCard />
         <FilmCard />
         <FilmCard />
