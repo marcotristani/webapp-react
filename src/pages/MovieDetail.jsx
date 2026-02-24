@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 //importo useparams per recuperare id da url page
 import { useParams } from "react-router-dom";
 
+//importo axios per eseguire chiamate verso backend
+import axios from "axios";
+
+//importo usestate e useeffect per poter elaborare i dati
+import { useState, useEffect } from "react";
+
 //importo componente per card review
 import ReviewCard from "../components/ReviewCard";
 
