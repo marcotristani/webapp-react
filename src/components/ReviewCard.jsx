@@ -1,14 +1,10 @@
-function ReviewCard() {
+function ReviewCard({ review }) {
+  const { id, name, vote, text } = review;
   return (
     <div className="card-reviews">
-      <h3>nome</h3>
-      <p>voto</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi aliquid
-        unde tempore amet eligendi! Nam corporis vero nostrum debitis dicta!
-        Animi excepturi veniam eius nulla aliquam itaque distinctio architecto
-        quos.
-      </p>
+      <h3>{name}</h3>
+      <p>voto: {vote}</p>
+      <p>{text}</p>
     </div>
   );
 }
