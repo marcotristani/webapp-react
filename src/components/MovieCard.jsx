@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-function FilmCard({ film }) {
-  const { id, title, director, genre, release_year } = film;
+function MovieCard({ movie }) {
+  const { id, title, director, genre, release_year } = movie;
   return (
     <div className="card">
       <img
@@ -16,11 +16,11 @@ function FilmCard({ film }) {
         <p className="card-text">{release_year}</p>
         <p>{genre}</p>
 
-        <Link to={"/film/2"}>
+        <Link to={`/movie/${id}`}>
           <button className="btn btn-outline-primary">Vai al dettaglio</button>
         </Link>
       </div>
     </div>
   );
 }
-export default FilmCard;
+export default MovieCard;

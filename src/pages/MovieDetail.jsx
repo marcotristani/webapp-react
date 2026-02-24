@@ -7,13 +7,13 @@ import { useParams } from "react-router-dom";
 //importo componente per card review
 import ReviewCard from "../components/ReviewCard";
 
-function FilmDetail() {
+function MovieDetail() {
   //recupero e scompongo oggetto risposta di useparams salvandomi l'id
   const { id } = useParams();
 
   return (
     <>
-      <h1>titolo film</h1>
+      <h1>titolo film {id}</h1>
       <p>anno di rilascio</p>
       <img
         src="https://m.media-amazon.com/images/I/81ynV-Akv-L.jpg"
@@ -42,4 +42,4 @@ function FilmDetail() {
     </>
   );
 }
-export default FilmDetail;
+export default MovieDetail;

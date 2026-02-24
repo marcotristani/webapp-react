@@ -1,6 +1,6 @@
-import FilmCard from "../components/FilmCard";
+import MovieCard from "../components/MovieCard";
 
-const listFilm = {
+const listMovies = {
   n_movies: 5,
   movies: [
     {
@@ -67,15 +67,17 @@ const listFilm = {
 };
 
 function Homepage() {
-  const { id, title, director, genre, release_year } = listFilm.movies[1];
-  console.log(listFilm.movies[1]);
+  //funzione per generare cards
+  function renderCards() {
+    return listMovies.movies.map((movie) => (
+      <MovieCard key={movie.id} movie={movie} />
+    ));
+  }
 
   return (
     <>
       <h2 className="text-primary">homepage</h2>
-      <div className="container d-flex flex-wrap">
-        <FilmCard film={listFilm.movies[1]} />
-      </div>
+      <div className="container d-flex flex-wrap">{renderCards()}</div>
     </>
   );
 }
