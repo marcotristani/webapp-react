@@ -13,49 +13,6 @@ import { useState, useEffect } from "react";
 //importo componente per card review
 import ReviewCard from "../components/ReviewCard";
 
-const moviedetail = {
-  id: 3,
-  title: "Titanic",
-  director: "James Cameron",
-  genre: "Romance",
-  release_year: 1997,
-  abstract:
-    "A romantic story set against the tragic sinking of the RMS Titanic.",
-  image: "matrix.jpg",
-  created_at: "2024-11-29T10:40:13.000Z",
-  updated_at: "2025-05-22T10:55:27.000Z",
-  reviews: [
-    {
-      id: 7,
-      movie_id: 3,
-      name: "Grace",
-      vote: 5,
-      text: "A heartbreaking love story.",
-      created_at: "2024-11-29T10:40:13.000Z",
-      updated_at: "2024-11-29T10:40:13.000Z",
-    },
-    {
-      id: 8,
-      movie_id: 3,
-      name: "Hank",
-      vote: 4,
-      text: "Beautiful visuals and a moving plot.",
-      created_at: "2024-11-29T10:40:13.000Z",
-      updated_at: "2024-11-29T10:40:13.000Z",
-    },
-    {
-      id: 9,
-      movie_id: 3,
-      name: "Ivy",
-      vote: 3,
-      text: "A bit too melodramatic for my taste.",
-      created_at: "2024-11-29T10:40:13.000Z",
-      updated_at: "2024-11-29T10:40:13.000Z",
-    },
-  ],
-  main_actors: ["Leonardo DiCaprio", "Kate Winslet"],
-};
-
 //definisco endpoint base per avere dettaglio film
 const endpoint_base = "http://localhost:3000/api/movies/";
 
@@ -99,17 +56,17 @@ function MovieDetail() {
     <>
       <h1>{title}</h1>
       <p>{release_year}</p>
-      <img src={`http://localhost:3000/api/movies/img/${image}`} alt={title} />
+      <img src={image} alt={title} />
       <p>{director}</p>
       <p>{genre}</p>
       <p>{abstract}</p>
       <div>
         Main Actors :
-        {/* <ul>
-          {main_actors.map((actor, index) => (
-            <li key={index}>{actor},</li>
+        <ul>
+          {main_actors?.map((actor, index) => (
+            <li key={index}>{actor}</li>
           ))}
-        </ul> */}
+        </ul>
       </div>
       <div className="container">
         <h1>Reviews:</h1>

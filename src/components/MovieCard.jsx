@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
 
 function MovieCard({ movie }) {
-  const { id, title, director, genre, release_year } = movie;
+  const { id, title, director, image, genre, release_year } = movie;
   return (
     <div className="card">
-      <img
-        className="card-img-top"
-        src="https://m.media-amazon.com/images/I/81ynV-Akv-L.jpg"
-        alt="titolo film"
-      />
+      <img className="card-img-top" src={image} alt={title} />
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
 
