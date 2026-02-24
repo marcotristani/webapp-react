@@ -56,9 +56,26 @@ const moviedetail = {
   main_actors: ["Leonardo DiCaprio", "Kate Winslet"],
 };
 
+//definisco endpoint base per avere dettaglio film
+const endpoint_base = "http://localhost:3000/api/movies/";
+
 function MovieDetail() {
   //recupero e scompongo oggetto risposta di useparams salvandomi l'id
   const { id } = useParams();
+
+  //definisco variabile di stato dove andare a salvare oggetto dettaglio film
+  const [movieDetail, setMovieDetail] = useState([]);
+
+  //definisco funzione per effettuare chiamata axios
+  function fetchMovieDetail() {
+    axios
+      .get(endpoint_base + id)
+      .then((res) => setMovieDetail(res.data))
+      .catch((err) => console.log(err));
+  }
+
+  //effettuo chiamata axios
+  useEffect(fetchMovieDetail, []);
 
   //destrutturo oggetto moviedetail
   const {
@@ -70,32 +87,29 @@ function MovieDetail() {
     image,
     reviews,
     main_actors,
-  } = moviedetail;
+  } = movieDetail;
 
   function renderReviewCards() {
-    return reviews.map((review) => (
-      <ReviewCard key={review.id} review={review} />
-    ));
+    return reviews?.map((review) => {
+      return <ReviewCard key={review.id} review={review} />;
+    });
   }
 
   return (
     <>
       <h1>{title}</h1>
       <p>{release_year}</p>
-      <img
-        src="https://m.media-amazon.com/images/I/81ynV-Akv-L.jpg"
-        alt="titolo film"
-      />
+      <img src={`http://localhost:3000/api/movies/img/${image}`} alt={title} />
       <p>{director}</p>
       <p>{genre}</p>
       <p>{abstract}</p>
       <div>
         Main Actors :
-        <ul>
+        {/* <ul>
           {main_actors.map((actor, index) => (
             <li key={index}>{actor},</li>
           ))}
-        </ul>
+        </ul> */}
       </div>
       <div className="container">
         <h1>Reviews:</h1>
