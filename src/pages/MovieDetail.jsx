@@ -85,7 +85,7 @@ function MovieDetail() {
       <Link to={"/"}>
         <button className="btn btn-outline-primary">Torna alla homepage</button>
       </Link>
-      <ReviewForm />
+      <ReviewForm reloadReviews={fetchMovieDetail} />
     </>
   );
 }

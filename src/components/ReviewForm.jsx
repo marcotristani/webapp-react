@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const ReviewForm = () => {
+const ReviewForm = ({ reloadReviews }) => {
   // creiamo stringa di ref all'endpoint del BE
   const endpoint = `http://localhost:3000/api/reviews/add`;
 
@@ -43,6 +43,8 @@ const ReviewForm = () => {
       .then(() => {
         // svuota campi form (e var di stato)
         setFormData(initialFormData);
+        // ri-esegui funzione di chiamata su page padre
+        reloadReviews();
       })
       .catch((err) => {
         console.log(err);
