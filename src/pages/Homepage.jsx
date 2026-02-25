@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 //importo componente moviecard
 import MovieCard from "../components/MovieCard";
+import { useNavigate } from "react-router-dom";
 
 //salvo endpoint dove andare a effettuare chiamata
 const endpoint = "http://localhost:3000/api/movies";
@@ -14,12 +15,18 @@ function Homepage() {
   //creo variabile di stato dove andare a salvare lista film
   const [listMovies, setListMovies] = useState([]);
 
+  //imposto redirect
+  const redirect = useNavigate();
+
   //creo funzione per effettuare chiamata axios
   const fetchMovies = () => {
     axios
       .get(endpoint)
       .then((res) => setListMovies(res.data.movies))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        if ((err.status = 500)) redirect("/500_error_internal_server");
+      });
   };
 
   //effettuo chiamata axios verso backend per ottenere lista movies

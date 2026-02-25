@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 //importo useparams per recuperare id da url page
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 //importo axios per eseguire chiamate verso backend
 import axios from "axios";
@@ -23,12 +23,19 @@ function MovieDetail() {
   //definisco variabile di stato dove andare a salvare oggetto dettaglio film
   const [movieDetail, setMovieDetail] = useState([]);
 
+  //definisco redirect per poter utilizzare usenavigate in caso di errore
+  const redirect = useNavigate();
+
   //definisco funzione per effettuare chiamata axios
   function fetchMovieDetail() {
     axios
       .get(endpoint_base + id)
       .then((res) => setMovieDetail(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        if ((err.status = 404)) redirect("/404_not_found");
+        if ((err.status = 500)) redirect("/500_error_internal_server");
+      });
   }
 
   //effettuo chiamata axios
