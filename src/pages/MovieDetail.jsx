@@ -13,6 +13,9 @@ import { useState, useEffect } from "react";
 //importo componente per card review
 import ReviewCard from "../components/ReviewCard";
 
+//importo componente form
+import ReviewForm from "../components/ReviewForm";
+
 //definisco endpoint base per avere dettaglio film
 const endpoint_base = "http://localhost:3000/api/movies/";
 
@@ -82,7 +85,7 @@ function MovieDetail() {
       <Link to={"/"}>
         <button className="btn btn-outline-primary">Torna alla homepage</button>
       </Link>
-      <h3 className="text-danger">pagina di dettaglio film {id}</h3>
+      <ReviewForm />
     </>
   );
 }
