@@ -6,7 +6,8 @@ header {
   z-index: 900;
 }
 main {
-  padding-top: 200px;
+  padding-top: 230px;
+  padding-bottom: 2rem;
 }
 .logo {
   max-height: 150px;

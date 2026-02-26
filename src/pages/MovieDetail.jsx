@@ -64,28 +64,36 @@ function MovieDetail() {
 
   return (
     <>
-      <h1>{title}</h1>
-      <p>{release_year}</p>
-      <img src={image} alt={title} />
-      <p>{director}</p>
-      <p>{genre}</p>
-      <p>{abstract}</p>
-      <div>
-        Main Actors :
-        <ul>
-          {main_actors?.map((actor, index) => (
-            <li key={index}>{actor}</li>
-          ))}
-        </ul>
+      <div className="row align-items-center mb-4">
+        <div className="col-md-4">
+          <img src={image} alt={title} className="img-fluid rounded shadow" />
+        </div>
+        <div className="col-md-8">
+          <h1 className="display-5 fw-bold">{title}</h1>
+          <p className="text-muted">
+            {release_year} • {director} • {genre}
+          </p>
+          <h5 className="pt-3">Plot</h5>
+          <p className="lead">{abstract}</p>
+          <h5 className="pt-3">Main Actors</h5>
+          <ul>
+            {main_actors?.map((actor, index) => (
+              <li key={index}>{actor}</li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="container">
-        <h1>Reviews:</h1>
+      <div className="mb-5">
+        <h3 className="mb-3">Recensioni</h3>
+
         {renderReviewCards()}
       </div>
+      <ReviewForm reloadReviews={fetchMovieDetail} />{" "}
       <Link to={"/"}>
-        <button className="btn btn-outline-primary">Torna alla homepage</button>
+        <button className="mt-3 btn btn-outline-primary">
+          Torna alla homepage
+        </button>
       </Link>
-      <ReviewForm reloadReviews={fetchMovieDetail} />
     </>
   );
 }

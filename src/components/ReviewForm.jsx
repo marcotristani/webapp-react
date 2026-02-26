@@ -53,12 +53,14 @@ const ReviewForm = ({ reloadReviews }) => {
   };
 
   return (
-    <div className="card">
-      <h5>Add your review</h5>
+    <div className="card-form  p-3 border border-3 rounded-2">
+      <header className="card-header p-2">
+        <h5>Nuova Recensione</h5>
+      </header>
       <div className="card-body">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Name</label>
+            <label>Nome</label>
             <input
               type="text"
               name="name"
@@ -68,14 +70,15 @@ const ReviewForm = ({ reloadReviews }) => {
             />
           </div>
           <div className="form-group">
-            <label>Review</label>
+            <label>Recensione</label>
             <textarea
+              className="form-control"
               name="text"
               value={formData.text}
               onChange={setFieldValue}
             ></textarea>
           </div>
-          <div>
+          <div className="form-group">
             <label>Voto</label>
             <input
               type="number"
@@ -87,10 +90,11 @@ const ReviewForm = ({ reloadReviews }) => {
               onChange={setFieldValue}
             />
           </div>
-
-          <button type="submit" className="btn btn-primary">
-            Send
-          </button>
+          <div className="d-flex justify-content-end pt-3">
+            <button type="submit" className="btn btn-primary">
+              Invia
+            </button>
+          </div>
         </form>
       </div>
     </div>

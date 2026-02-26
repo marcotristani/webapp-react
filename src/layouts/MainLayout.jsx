@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function MainLayout() {
   return (
     <>
-      <header className="bg-dark position-fixed">
+      <header className="bg-black position-fixed">
         <div class=" container py-3 d-flex justify-content-around align-items-center">
           <div className="col">
             <Link to="/">
