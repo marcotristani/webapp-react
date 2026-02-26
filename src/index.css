@@ -1,3 +1,17 @@
+body {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+header {
+  width: 100%;
+  z-index: 900;
+}
+main {
+  padding-top: 200px;
+}
+.logo {
+  max-height: 150px;
+}
+
 .container {
   gap: 20px;
 }
