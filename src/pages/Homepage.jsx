@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import { useNavigate } from "react-router-dom";
 
+import { useMain } from "../context/MainContext";
+
 //salvo endpoint dove andare a effettuare chiamata
 const endpoint = "http://localhost:3000/api/movies";
 
@@ -18,15 +20,22 @@ function Homepage() {
   //imposto redirect
   const redirect = useNavigate();
 
+  // attivo l'utilizzo del/dei valore/i messi a disposizione del contesto globale
+  const { setIsLoading } = useMain();
+
   //creo funzione per effettuare chiamata axios
   const fetchMovies = () => {
+    //attivo loader
+    setIsLoading(true);
+
     axios
       .get(endpoint)
       .then((res) => setListMovies(res.data.movies))
       .catch((err) => {
         console.log(err);
         if ((err.status = 500)) redirect("/500_error_internal_server");
-      });
+      })
+      .finally(setIsLoading(false));
   };
 
   //effettuo chiamata axios verso backend per ottenere lista movies

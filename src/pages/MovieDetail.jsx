@@ -10,6 +10,9 @@ import axios from "axios";
 //importo usestate e useeffect per poter elaborare i dati
 import { useState, useEffect } from "react";
 
+//importo usemain per loader in chiamata axios
+import { useMain } from "../context/MainContext";
+
 //importo componente per card review
 import ReviewCard from "../components/ReviewCard";
 
@@ -29,8 +32,14 @@ function MovieDetail() {
   //definisco redirect per poter utilizzare usenavigate in caso di errore
   const redirect = useNavigate();
 
+  // attivo l'utilizzo del/dei valore/i messi a disposizione del contesto globale
+  const { setIsLoading } = useMain();
+
   //definisco funzione per effettuare chiamata axios
   function fetchMovieDetail() {
+    //attivo loader
+    setIsLoading(true);
+
     axios
       .get(endpoint_base + id)
       .then((res) => setMovieDetail(res.data))
@@ -38,7 +47,8 @@ function MovieDetail() {
         console.log(err);
         if ((err.status = 404)) redirect("/404_not_found");
         if ((err.status = 500)) redirect("/500_error_internal_server");
-      });
+      })
+      .finally(setIsLoading(false));
   }
 
   //effettuo chiamata axios
