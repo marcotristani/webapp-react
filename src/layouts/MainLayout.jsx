@@ -20,7 +20,7 @@ function MainLayout() {
           </div>
         </div>
       </header>
-      <main>
+      <main className="container">
         <Outlet />
       </main>
     </>
